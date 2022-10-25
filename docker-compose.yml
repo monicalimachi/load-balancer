@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  # Build the app services
+  app:
+    build: ./app
+    restart: always
+  #app2:
+  #  build: ./app
+  #  restart: always
+  nginx:
+    container_name: nginx
+    volumes:
+    - ./nginx/conf.d:/etc/nginx/conf.d
+    build: 
+      context: ./nginx/
+      dockerfile: Dockerfile.nginx
+    # Bind the port 5100 of container to machine port 5100
+    ports:
+      - 80:80
+    # Make app as nginx dependency service
+    depends_on:
+      - app
+    restart: always

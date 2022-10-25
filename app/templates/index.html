@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <title>LoadBalancers v1</title>
+</head>
+    <body> 
+    {% extends 'base.html' %}    
+    {% block content %}
+       <form action = "http://0.0.0.0:5000/login" method = "post">        
+       
+        <h1>{% block title %} Welcome V1 {% endblock %}</h1>
+
+        <p>Enter Name:</p>   
+  
+        <p><input type = "text" name = "nm" /></p>
+         
+        <p><input type = "submit" value = "submit" /></p>
+       
+       </form>   
+       {% endblock %}  
+    </body>
+ </html>
